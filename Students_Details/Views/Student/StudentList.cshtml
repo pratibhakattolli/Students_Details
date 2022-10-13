@@ -1,0 +1,33 @@
+﻿@model List<StudentsDetails.Context.tblStudentInfo>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+
+<h1 style="color:cornflowerblue">Students List</h1>
+<hr />
+<table class="table table-hover">
+    <tr style="color:crimson">
+        <th>Name</th>
+        <th>Mobile.No</th>
+        <th>Departement</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.StudentName</td>
+            <td>@item.StudentMobile</td>
+            <td>@item.StudentDept</td>
+            <td>@item.StudentAddress</td>
+            <td>
+                <a href="@Url.Action("Student",new { item.StudentName,item.StudentMobile,item.StudentDept,item.StudentAddress,item.StudentId})"><i class="glyphicon glyphicon-pencil"></i></a>
+                <a href="@Url.Action("Delete",new { ID=@item.StudentId})"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+
+        </tr>
+    }
+</table>
+
+

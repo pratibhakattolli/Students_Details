@@ -1,0 +1,43 @@
+﻿@model StudentsDetails.Context.tblStudentInfo
+@{
+    ViewBag.Title = "Student";
+}
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post))
+
+{
+    <div class="container">
+        <div class="=form-group">
+            @Html.HiddenFor(x=>x.StudentId)
+            <label>Name</label>
+            @Html.ValidationMessageFor(x => x.StudentName, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.StudentName, new { @class = "form-control" })
+        </div>
+        <div class="=form-group">
+            <label>Mobile.No</label>
+            @Html.ValidationMessageFor(x => x.StudentMobile, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.StudentMobile, new { @class = "form-control" })
+        </div>
+        <div class="=form-group">
+            <label>Department</label>
+            @Html.ValidationMessageFor(x => x.StudentDept, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.StudentDept, new { @class = "form-control" })
+        </div>
+        <div class="=form-group">
+            <label>Address</label>
+            @Html.ValidationMessageFor(x => x.StudentAddress, "", new { @class = "error" })
+            @Html.TextAreaFor(x => x.StudentAddress, new { @class = "form-control", @rows = "5" })
+        </div>
+        <div class="=form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
+        </div>
+
+
+    </div>
+}
